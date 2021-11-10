@@ -1,0 +1,33 @@
+######## Install dockers and nginx on localhost using ansible ###################
+
+install ansible on your machine:
+	commands: sudo apt update
+		  sudo apt install ansible
+		  
+configure the hosts in the host file 
+	command:  sudo nano /etc/ansible/hosts
+	# i.e
+	[local]
+	localhost
+	[webserver]
+	localhost
+	
+link to the tutorial followed for ansible and host configuration:  https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-20-04
+
+ssh keygen and ssh permission:
+		commands: ssh-keygen 
+			  ssh-copy-id root@localhost
+
+write a playbook for the required installation and configurations 
+
+link followed for docker's playbook: https://medium.com/@pierangelo1982/install-docker-with-ansible-d078ad7b0a54
+link followed for nginx playbook: https://www.techbeginner.in/2021/01/how-to-install-nginx-using-ansible.html
+
+run the ansible playbook:
+	command: ansible-playbook playbook.yml --extra-vars "ansible_sudo_pass=passowrd"
+	check status of docker and nginx using following command:
+		sudo docker ps
+		sudo systemctl status nginx.service
+		
+		
+		
